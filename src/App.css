@@ -36,3 +36,15 @@
     transform: rotate(360deg);
   }
 }
+
+.root {
+  background-color: black;
+}
+
+body {
+  background-image: url("./Components/assets/images/dark2.jpg");
+  background-attachment: fixed;
+  background-position: center center;
+  background-clip: border-box;
+  height: 1000px;
+}

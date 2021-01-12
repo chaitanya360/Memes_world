@@ -1,0 +1,41 @@
+.icon:hover {
+  cursor: pointer;
+}
+
+.laughingBing_visible {
+  position: absolute;
+  z-index: 1;
+  width: 50%;
+  bottom: 50%;
+  align-self: center;
+  margin-top: auto;
+  margin-bottom: auto;
+  animation: FadeInOut;
+  animation-duration: 1s;
+}
+
+.laughingBing_invisible {
+  position: absolute;
+  z-index: 1;
+  width: 50%;
+  margin-top: auto;
+  margin-bottom: auto;
+  display: none;
+}
+
+@keyframes FadeInOut {
+  0% {
+    opacity: 0;
+    width: 10%;
+  }
+
+  50% {
+    opacity: 0.7;
+    width: 25%;
+  }
+
+  100% {
+    opacity: 0;
+    width: 50%;
+  }
+}

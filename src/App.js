@@ -1,25 +1,59 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { Component, useState, useEffect } from "react";
+import NavBarComponent from "./Components/navBar";
+import CardComponet from "./Components/cardComponent";
+import Header from "./Components/headerComponent";
+import "./App.css";
 
-function App() {
+const WorkArea = () => {
+  const [items, setItems] = useState([]);
+
+  function sleep(ms) {
+    return new Promise((resolve) => setTimeout(resolve, ms));
+  }
+
+  useEffect(() => {
+    console.log("use Effect is called");
+    fetchData();
+  }, []);
+
+  function getCardWidth() {
+    if (window.innerWidth > 450) return "400px";
+    else {
+      return "100%";
+    }
+  }
+
+  function fetchData() {
+    fetch("https://chaitanya360.pythonanywhere.com/api/images/")
+      .then((Response) => {
+        return Response.json();
+      })
+      .then((data) => {
+        console.log(data);
+        data.map((e) => {
+          if (!e["user_name"]) e["user_name"] = "mayur jagtap";
+          if (!e["upload_date"]) e["upload_date"] = "11 jan 2020";
+        });
+        setItems(data);
+      })
+      .catch((reject) =>
+        console.log(reject + " may be net connection proble!")
+      );
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div style={{ display: "grid" }}>
+      <Header />
+      <NavBarComponent />
+      {/* <Loading /> */}
+
+      <div style={{ width: getCardWidth(), margin: "auto" }}>
+        {items.map((item) => (
+          <CardComponet item={item} key={items.indexOf(item)}></CardComponet>
+        ))}
+      </div>
     </div>
   );
-}
+};
 
-export default App;
+export default WorkArea;
