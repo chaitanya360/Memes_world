@@ -5,6 +5,12 @@ const Image = (props) => {
   return (
     <React.Fragment>
       <img
+        onLoad={() => {
+          console.log("IMG is loaded");
+        }}
+        onLoadStart={() => {
+          console.log("IMG is loaded");
+        }}
         className="image_blur thumb"
         src={process.env.PUBLIC_URL + "/images/blur_placeholder.jpg"}
         style={{ display: isLoaded ? "none" : "visible" }}
