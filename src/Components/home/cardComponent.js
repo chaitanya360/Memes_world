@@ -1,5 +1,4 @@
-import { React, useState, useRef, useEffect } from "react";
-
+import { React, useState, useEffect } from "react";
 import { useLoading, ThreeDots } from "@agney/react-loading";
 import Post from "./post.js";
 
@@ -7,7 +6,6 @@ const CardComponet = () => {
   const [items, setItems] = useState(false);
 
   useEffect(() => {
-    console.log("inside card componenet");
     fetchData();
   }, []);
 
@@ -17,17 +15,30 @@ const CardComponet = () => {
   });
 
   function fetchData() {
+    let myHeaders = new Headers();
+    myHeaders.append(
+      "Authorization",
+      "Bearer " + localStorage.getItem("access")
+    );
+
+    let requestOptions = {
+      method: "GET",
+      headers: myHeaders,
+      redirect: "follow",
+    };
+
     fetch("https://chaitanya360.pythonanywhere.com/api/images/")
       .then((Response) => {
         return Response.json();
       })
       .then((data) => {
-        console.log(data);
-        data.map((e) => {
-          if (!e["user_name"]) e["user_name"] = "mayur jagtap";
-          if (!e["upload_date"]) e["upload_date"] = "11 jan 2020";
-        });
-        setItems(data);
+        if (data.detail) {
+          console.log("login not done!");
+        } else {
+          console.log(data);
+
+          setItems(data);
+        }
       })
       .catch((reject) =>
         console.log(reject + " may be net connection problem!")

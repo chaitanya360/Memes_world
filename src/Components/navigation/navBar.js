@@ -1,9 +1,8 @@
-import { React, useState, useEffect } from "react";
-import { Button, Navbar, Nav, Dropdown } from "react-bootstrap";
-import { red } from "@material-ui/core/colors";
+import { React, useState } from "react";
+import { Navbar, Nav } from "react-bootstrap";
 import HomeRoundedIcon from "@material-ui/icons/HomeRounded";
 import PersonIcon from "@material-ui/icons/Person";
-import { Link, BrowserRouter as Router, useRouteMatch } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const NavBarComponent = () => {
   const [navbarStyles, setNavbarStyles] = useState({

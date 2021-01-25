@@ -4,14 +4,18 @@
 
 .laughingBing_visible {
   position: absolute;
+  display: inline-block;
   z-index: 1;
   width: 50%;
-  bottom: 50%;
   align-self: center;
   margin-top: auto;
   margin-bottom: auto;
   animation: FadeInOut;
+  animation-timing-function: ease-in-out;
   animation-duration: 1s;
+  margin: auto;
+  left: 25%;
+  top: 15%;
 }
 
 .laughingBing_invisible {
@@ -26,16 +30,17 @@
 @keyframes FadeInOut {
   0% {
     opacity: 0;
-    width: 10%;
+    transform: scale(0.3, 0.3);
   }
 
   50% {
     opacity: 0.7;
-    width: 25%;
+
+    transform: scale(0.6, 0.6);
   }
 
   100% {
     opacity: 0;
-    width: 50%;
+    transform: scale(1, 1);
   }
 }

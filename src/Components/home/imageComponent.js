@@ -1,6 +1,5 @@
 import { React, useRef, useState, useEffect } from "react";
 import Image from "./image";
-import classnames from "classnames";
 
 const ImageComponent = ({ item }) => {
   const placeholder = useRef();
@@ -33,7 +32,7 @@ const ImageComponent = ({ item }) => {
     <div ref={placeholder}>
       {showImage && (
         <Image
-          src={"https://chaitanya360.pythonanywhere.com/" + item["img"]}
+          src={"https://chaitanya360.pythonanywhere.com/media/" + item["img"]}
           style={{
             maxHeight: "800px",
             minHeight: "0px",
